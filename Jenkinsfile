@@ -9,6 +9,17 @@ pipeline {
             }
         }
 
+        stage('Copy Binary') {
+            steps {
+                copyArtifacts(
+                    projectName: 'DeploymentJob',
+                    selector: lastSuccessful(),
+                    filter: 'ABC.exe',
+                    target: '.'
+                )
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 sh '''
