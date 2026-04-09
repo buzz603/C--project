@@ -14,7 +14,7 @@ pipeline {
                 copyArtifacts(
                     projectName: 'DeploymentJob',
                     selector: lastSuccessful(),
-                    filter: 'ABC.exe',
+                    filter: '**/ABC.exe',
                     target: '.'
                 )
             }
